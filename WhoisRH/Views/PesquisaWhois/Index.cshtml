@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WhoisRH.Models.PesquisaWhois>
+
+@{
+    ViewBag.Title = "Histórico";
+}
+
+<h2>Histórico</h2>
+
+@foreach (var item in Model) {
+    <div>
+        <p>@item.Dominio</p>
+        <p>@item.DataPesquisa</p>
+        @if (item.Registrado) {
+            <p>Registrado</p>
+            <p>@item.DataRegistro</p>
+            <p>@item.UltimaAlteracao</p>
+            <p>@item.Expiracao</p>
+            <ul>
+                @foreach (string servidor in item.NomesServidores.Split('\n')) {
+                    <li>@servidor</li>
+                }
+            </ul>
+        } else {
+            <p>Disponível para Registro!</p>
+        }
+    </div>
+}
+
+</table>

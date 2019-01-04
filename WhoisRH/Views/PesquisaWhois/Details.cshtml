@@ -1,0 +1,74 @@
+﻿@model WhoisRH.Models.PesquisaWhois
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PesquisaWhois</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dominio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dominio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPesquisa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPesquisa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registrado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registrado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimaAlteracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaAlteracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expiracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expiracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomesServidores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomesServidores)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
