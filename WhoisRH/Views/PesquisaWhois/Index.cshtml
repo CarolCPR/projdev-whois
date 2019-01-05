@@ -10,22 +10,22 @@
 <div class="card-columns mt-3">
     @foreach (var item in Model) {
         <div class="card text-white mb-3" style="background-color: @HSLColor.MapToRainbow(i, pesquisas).ToCSS()">
-            <div class="card-header"><strong>@item.Dominio</strong></div>
-            <div class="card-body">
+            <div class="card-header text-center"><strong>@item.Dominio</strong></div>
+            <div class="card-body text-center">
                 @if (item.Registrado) {
                     <h6><strong>Registro: @item.DataRegistro</strong></h6>
                     <h6><strong>Ultima Alteração: @item.UltimaAlteracao</strong></h6>
                     <h6><strong>Expiração: @item.Expiracao</strong></h6>
                     <h6><strong>Servidores:</strong></h6>
-                    <ul class="mb-0">
+                    <ul class="mb-0 pl-0">
                         @foreach (string servidor in item.NomesServidores.Split('\n')) {
-                            <li>@servidor</li>
+                            <li style="font-size: .75rem">@servidor</li>
                         }
                     </ul>
                 } else {
-                    <p>Disponível para Registro!</p>
-                    <form method="post" target="_blank" action="https://www.redehost.com.br/registro-de-dominio">
-                        <button type="submit" class="btn btn-primary">Registrar agora!</button>
+                    <h6 class="d-inline mt-2">Disponível,</h6>
+                    <form class="d-inline" method="post" target="_blank" action="https://www.redehost.com.br/registro-de-dominio">
+                        <button type="submit" class="btn btn-primary">Registre agora!</button>
                         @{ 
                             List<string> dominio = new List<string>(item.Dominio.Split('.'));
                             string nome = dominio[0];
@@ -36,7 +36,7 @@
                     </form>
                 }
             </div>
-            <div class="card-footer">
+            <div class="card-footer text-center">
                 <h6 class="mt-1"><strong>Pesquisa: @item.DataPesquisa</strong></h6>
             </div>
         </div>
