@@ -23,19 +23,17 @@ namespace WhoisRH.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }catch(Exception e) {
-                return RedirectToAction("Error", new { error = e.Message });
+                return RedirectToAction("Pesquisar", new { error = e.Message });
             }
         }
-
-        public ActionResult Error() {
-            return View();
-        }
+        
 
         // GET: PesquisaWhois
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             var pesquisas = db.Pesquisas.ToList();
             pesquisas.Reverse();
+            if(!string.IsNullOrEmpty(query)) pesquisas = pesquisas.FindAll(pesquisa => pesquisa.Dominio.Contains(query.ToLower()));
             return View(pesquisas);
         }
 

@@ -1,29 +1,38 @@
-﻿@model IEnumerable<WhoisRH.Models.PesquisaWhois>
+﻿@using WhoisRH.Models;
+@model IEnumerable<PesquisaWhois>
 
 @{
     ViewBag.Title = "Histórico";
+    int pesquisas = Model.Count();
+    int i = 0;
 }
 
-<h2>Histórico</h2>
-
-@foreach (var item in Model) {
-    <div>
-        <p>@item.Dominio</p>
-        <p>@item.DataPesquisa</p>
-        @if (item.Registrado) {
-            <p>Registrado</p>
-            <p>@item.DataRegistro</p>
-            <p>@item.UltimaAlteracao</p>
-            <p>@item.Expiracao</p>
-            <ul>
-                @foreach (string servidor in item.NomesServidores.Split('\n')) {
-                    <li>@servidor</li>
+<div class="card-columns mt-3">
+    @foreach (var item in Model) {
+        <div class="card text-white mb-3" style="background-color: @HSLColor.MapToRainbow(i, pesquisas).ToCSS()">
+            <div class="card-header"><strong>@item.Dominio</strong></div>
+            <div class="card-body">
+                @if (item.Registrado) {
+                    <h6><strong>Registro: @item.DataRegistro</strong></h6>
+                    <h6><strong>Ultima Alteração: @item.UltimaAlteracao</strong></h6>
+                    <h6><strong>Expiração: @item.Expiracao</strong></h6>
+                    <h6><strong>Servidores:</strong></h6>
+                    <ul class="mb-0">
+                        @foreach (string servidor in item.NomesServidores.Split('\n')) {
+                            <li>@servidor</li>
+                        }
+                    </ul>
+                } else {
+                    <p>Disponível para Registro!</p>
                 }
-            </ul>
-        } else {
-            <p>Disponível para Registro!</p>
-        }
-    </div>
+            </div>
+            <div class="card-footer">
+                <h6 class="mt-1"><strong>Pesquisa: @item.DataPesquisa</strong></h6>
+            </div>
+        </div>
+        {i++; }
+    }
+</div>
+@if(Model.Count() == 0) {
+    <div class="alert alert-info text-center">Nenhuma pesquisa encontrada.</div>
 }
-
-</table>

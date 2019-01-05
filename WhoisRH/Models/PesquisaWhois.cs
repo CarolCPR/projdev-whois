@@ -54,7 +54,7 @@ namespace WhoisRH.Models{
 
         public static PesquisaWhois FromJSON(string json) {
             DateTime? DateFromJSON(string data) {
-                if (string.IsNullOrEmpty(json)) return null;
+                if (string.IsNullOrEmpty(data)) return null;
                 return DateTime.ParseExact(data, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             }
             dynamic raw = JsonConvert.DeserializeObject(json);
