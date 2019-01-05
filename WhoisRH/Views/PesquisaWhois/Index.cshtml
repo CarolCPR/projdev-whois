@@ -24,6 +24,16 @@
                     </ul>
                 } else {
                     <p>Disponível para Registro!</p>
+                    <form method="post" target="_blank" action="https://www.redehost.com.br/registro-de-dominio">
+                        <button type="submit" class="btn btn-primary">Registrar agora!</button>
+                        @{ 
+                            List<string> dominio = new List<string>(item.Dominio.Split('.'));
+                            string nome = dominio[0];
+                            dominio.RemoveAt(0);
+                        }
+                        <input type="hidden" name="NomeDominio" value="@nome"/>
+                        <input type="hidden" name="Extensao" value="@string.Join(".", dominio)" />
+                    </form>
                 }
             </div>
             <div class="card-footer">

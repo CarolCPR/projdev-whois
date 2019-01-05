@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WhoisRH.Models {
     public class HSLColor {
         // Private data members below are on scale 0-1
-        // They are scaled for use externally based on scale
+        // They are scaled for use externally based on scale'
         private double hue = 1.0;
         private double saturation = 1.0;
         private double luminosity = 1.0;
@@ -96,10 +96,11 @@ namespace WhoisRH.Models {
         }
 
         public static implicit operator HSLColor(Color color) {
-            HSLColor hslColor = new HSLColor();
-            hslColor.hue = color.GetHue() / 360.0; // we store hue as 0-1 as opposed to 0-360 
-            hslColor.luminosity = color.GetBrightness();
-            hslColor.saturation = color.GetSaturation();
+            HSLColor hslColor = new HSLColor {
+                hue = color.GetHue() / 360.0, // we store hue as 0-1 as opposed to 0-360 
+                luminosity = color.GetBrightness(),
+                saturation = color.GetSaturation()
+            };
             return hslColor;
         }
         #endregion
